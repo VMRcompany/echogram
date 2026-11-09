@@ -3,15 +3,201 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Echogram</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; background: #111; color: #eee; line-height: 1.5; }
-    a { color: #8ab4ff; }
-  </style>
+  <title>Echogram — клиент на базе Telegram</title>
+  <meta name="description" content="Echogram — неофициальный клиент на базе Telegram для Android. Независимое приложение на протоколе Telegram.">
+  <meta name="theme-color" content="#09090c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Echogram</h1>
-  <p>Неофициальный клиент на базе Telegram для Android.</p>
-  <p><a href="faq.html">FAQ</a> · <a href="privacy.html">Политика конфиденциальности</a></p>
+  <header class="header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="Echogram">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#667fff"/>
+          <path d="M8 16c2.2-3.2 4.6-4.8 8-4.8s5.8 1.6 8 4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M11 16c1.4-2 3-3 5-3s3.6 1 5 3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="16" cy="16.2" r="1.5" fill="#fff"/>
+        </svg>
+        Echogram
+      </a>
+      <button class="burger" type="button" aria-label="Меню" aria-expanded="false"><span></span></button>
+      <nav class="nav">
+        <a href="#advantages">Преимущества</a>
+        <a href="#features">Возможности</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Политика</a>
+        <a class="btn btn-primary btn-sm header-cta" href="https://t.me/echogram_official">Канал</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker reveal" style="--i:0"><i></i> Android</div>
+          <h1 class="reveal" style="--i:1">Echogram — клиент на базе Telegram</h1>
+          <p class="lead reveal" style="--i:2">Неофициальный клиент на базе Telegram для Android.</p>
+          <div class="hero-actions reveal" style="--i:3">
+            <a class="btn btn-primary" href="https://t.me/echogram_official">Официальный канал</a>
+            <a class="btn btn-ghost" href="faq.html">FAQ</a>
+          </div>
+          <p class="fine reveal" style="--i:4">Независимый клиент мессенджера на протоколе Telegram. Это не официальное приложение Telegram.</p>
+        </div>
+        <div class="hero-visual reveal" style="--i:2">
+          <div class="glow"></div>
+          <div class="sticker sticker-xl" data-sticker="stickers/wave.json" role="img" aria-label="Утка машет рукой"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro" id="about">
+      <div class="wrap">
+        <p class="section-label reveal">О клиенте</p>
+        <h2 class="reveal" style="--i:1">Echogram — независимый клиент мессенджера на протоколе Telegram</h2>
+        <div class="intro-grid">
+          <article class="intro-card reveal" style="--i:2">
+            <h3>Это не официальное приложение Telegram</h3>
+            <p>Свой идентификатор приложения, своё оформление и свои настройки. Мы не являемся Telegram Messenger Inc.</p>
+          </article>
+          <article class="intro-card reveal" style="--i:3">
+            <h3>Сообщения идут через Telegram</h3>
+            <p>Номер телефона, сообщения, контакты, медиафайлы и сессии передаются на серверы Telegram по протоколу MTProto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="advantages">
+      <div class="wrap">
+        <p class="section-label reveal">Преимущества</p>
+        <h2 class="block-title reveal" style="--i:1">Знакомый протокол. Свой клиент.</h2>
+        <div class="scene">
+          <article class="scene-card reveal" style="--i:2">
+            <div class="sticker sticker-lg" data-sticker="stickers/phone.json" role="img" aria-label="Утка листает телефон"></div>
+            <h3>Листает телефон</h3>
+            <p>Если прокси включён в настройках, Echogram ищет рабочие SOCKS5 и MTProto-серверы, проверяет пинг и подключается только к доступному адресу.</p>
+          </article>
+          <article class="scene-card reveal" style="--i:3">
+            <div class="sticker sticker-lg" data-sticker="stickers/happy.json" role="img" aria-label="Утка радуется"></div>
+            <h3>И радуется</h3>
+            <p>Свой идентификатор, своё оформление и свои настройки. Сообщения по-прежнему идут через инфраструктуру Telegram.</p>
+          </article>
+        </div>
+        <div class="adv-item reveal">
+          <div class="num">01</div>
+          <h3>Чем Echogram отличается от Telegram</h3>
+          <p>Echogram использует собственный идентификатор приложения, своё оформление и свои настройки. Сообщения по-прежнему идут через инфраструктуру Telegram.</p>
+        </div>
+        <div class="adv-item reveal" style="--i:1">
+          <div class="num">02</div>
+          <h3>Как работает прокси</h3>
+          <p>Если прокси включён в настройках, Echogram ищет рабочие SOCKS5 и MTProto-серверы в открытых списках в интернете, проверяет пинг и подключается только к доступному адресу. Недоступные адреса удаляются. Другой сервер выбирается, только если текущий перестал отвечать. Прокси можно выключить вручную.</p>
+        </div>
+        <div class="adv-item reveal" style="--i:2">
+          <div class="num">03</div>
+          <h3>Premium, звёзды и подарки</h3>
+          <p>Нет. Оформить официальные утилиты Telegram можно только в официальном приложении Telegram. Покупка официальных услуг Telegram в Echogram недоступна.</p>
+        </div>
+        <div class="adv-item reveal" style="--i:3">
+          <div class="num">04</div>
+          <h3>Что остаётся на телефоне</h3>
+          <p>На телефоне сохраняются локальная база чатов, настройки, список прокси и ключи сессии, необходимые для входа. Удаление приложения стирает локальные данные Echogram на этом устройстве.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <p class="section-label reveal">Возможности</p>
+        <h2 class="block-title reveal" style="--i:1">Всё, что есть у клиента, на одном экране</h2>
+        <div class="cards">
+          <article class="card reveal" style="--i:1">
+            <div class="sticker" data-sticker="stickers/like.json" role="img" aria-label="Утка показывает класс"></div>
+            <h3>Свой клиент</h3>
+            <p>Собственный идентификатор приложения, своё оформление и свои настройки.</p>
+          </article>
+          <article class="card reveal" style="--i:2">
+            <div class="sticker" data-sticker="stickers/laugh.json" role="img" aria-label="Утка смеётся"></div>
+            <h3>Инфраструктура Telegram</h3>
+            <p>Сообщения по-прежнему идут через инфраструктуру Telegram. Отдельной рекламной аналитики нет.</p>
+          </article>
+          <article class="card reveal" style="--i:3">
+            <div class="sticker" data-sticker="stickers/phone.json" role="img" aria-label="Утка с телефоном"></div>
+            <h3>Прокси</h3>
+            <p>Публичные SOCKS5 и MTProto, проверка доступности и ручное отключение в настройках.</p>
+          </article>
+          <article class="card reveal" style="--i:4">
+            <div class="sticker" data-sticker="stickers/lock.json" role="img" aria-label="Утка у сейфа"></div>
+            <h3>Без магазина Telegram</h3>
+            <p>Premium, звёзды и подарки оформляются только в официальном приложении Telegram.</p>
+          </article>
+        </div>
+        <div class="channel reveal">
+          <div>
+            <strong>Официальный канал</strong>
+            <span>t.me/echogram_official</span>
+          </div>
+          <a class="btn btn-primary btn-sm" href="https://t.me/echogram_official">Открыть</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <p class="section-label reveal">FAQ</p>
+        <h2 class="block-title reveal" style="--i:1">Частые вопросы</h2>
+        <div class="faq-list">
+          <div class="faq-item open reveal">
+            <button class="faq-q" type="button" aria-expanded="true">Чем Echogram отличается от Telegram?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Echogram использует собственный идентификатор приложения, своё оформление и свои настройки. Сообщения по-прежнему идут через инфраструктуру Telegram.</div>
+          </div>
+          <div class="faq-item reveal" style="--i:1">
+            <button class="faq-q" type="button" aria-expanded="false">Можно ли купить Telegram Premium, звёзды и подарки в Echogram?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Нет. Оформить официальные утилиты Telegram можно только в официальном приложении Telegram.</div>
+          </div>
+          <div class="faq-item reveal" style="--i:2">
+            <button class="faq-q" type="button" aria-expanded="false">Как работает прокси?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Если прокси включён в настройках, Echogram ищет рабочие SOCKS5 и MTProto-серверы в открытых списках в интернете, проверяет пинг и подключается только к доступному адресу. Недоступные адреса удаляются. Другой сервер выбирается, только если текущий перестал отвечать. Прокси можно выключить вручную.</div>
+          </div>
+          <div class="faq-item reveal" style="--i:3">
+            <button class="faq-q" type="button" aria-expanded="false">Где официальный канал?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a"><a href="https://t.me/echogram_official">t.me/echogram_official</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="index.html">
+            <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#667fff"/>
+              <path d="M8 16c2.2-3.2 4.6-4.8 8-4.8s5.8 1.6 8 4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M11 16c1.4-2 3-3 5-3s3.6 1 5 3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="16" cy="16.2" r="1.5" fill="#fff"/>
+            </svg>
+            Echogram
+          </a>
+          <p>Неофициальный клиент на базе Telegram для Android.</p>
+        </div>
+        <div class="footer-links">
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="https://t.me/echogram_official">t.me/echogram_official</a>
+        </div>
+      </div>
+      <p class="legal">Echogram не является Telegram Messenger Inc. и не продаёт подписку Telegram Premium, звёзды и подарки.</p>
+    </div>
+  </footer>
+  <script src="js/lottie.min.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

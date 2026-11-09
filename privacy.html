@@ -4,30 +4,97 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Политика конфиденциальности Echogram</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 16px; background: #111; color: #eee; line-height: 1.6; }
-    h1, h2 { color: #fff; }
-    a { color: #8ab4ff; }
-  </style>
+  <meta name="description" content="Политика конфиденциальности Echogram. Дата публикации: 7 ноября 2026.">
+  <meta name="theme-color" content="#09090c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Политика конфиденциальности Echogram</h1>
-  <p>Дата публикации: 7 ноября 2026.</p>
-  <p>Echogram — независимый Android-клиент, который подключается к серверам Telegram. Мы не являемся Telegram Messenger Inc. и не продаём подписку Telegram Premium, звёзды и подарки.</p>
+  <header class="header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="Echogram">
+        <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#667fff"/>
+          <path d="M8 16c2.2-3.2 4.6-4.8 8-4.8s5.8 1.6 8 4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M11 16c1.4-2 3-3 5-3s3.6 1 5 3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="16" cy="16.2" r="1.5" fill="#fff"/>
+        </svg>
+        Echogram
+      </a>
+      <button class="burger" type="button" aria-label="Меню" aria-expanded="false"><span></span></button>
+      <nav class="nav">
+        <a href="index.html#advantages">Преимущества</a>
+        <a href="index.html#features">Возможности</a>
+        <a href="faq.html">FAQ</a>
+        <a class="active" href="privacy.html">Политика</a>
+        <a class="btn btn-primary btn-sm header-cta" href="https://t.me/echogram_official">Канал</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>Какие данные обрабатываются</h2>
-  <p>Номер телефона, сообщения, контакты, медиафайлы и сессии обрабатываются так же, как в любом клиенте Telegram: они передаются на серверы Telegram по протоколу MTProto. Echogram не ведёт отдельную рекламную аналитику и не продаёт ваши данные третьим лицам.</p>
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="page-duck">
+          <div>
+            <p class="section-label reveal">Документ</p>
+            <h1 class="reveal" style="--i:1">Политика конфиденциальности Echogram</h1>
+            <p class="date reveal" style="--i:2">Дата публикации: 7 ноября 2026.</p>
+          </div>
+          <div class="sticker sticker-lg reveal" style="--i:2" data-sticker="stickers/lock.json" role="img" aria-label="Утка у сейфа"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 8px;">
+      <div class="wrap doc">
+        <p>Echogram — независимый Android-клиент, который подключается к серверам Telegram. Мы не являемся Telegram Messenger Inc. и не продаём подписку Telegram Premium, звёзды и подарки.</p>
 
-  <h2>Что хранится на устройстве</h2>
-  <p>На телефоне сохраняются локальная база чатов, настройки, список прокси и ключи сессии, необходимые для входа. Удаление приложения стирает локальные данные Echogram на этом устройстве.</p>
+        <h2>Какие данные обрабатываются</h2>
+        <p>Номер телефона, сообщения, контакты, медиафайлы и сессии обрабатываются так же, как в любом клиенте Telegram: они передаются на серверы Telegram по протоколу MTProto. Echogram не ведёт отдельную рекламную аналитику и не продаёт ваши данные третьим лицам.</p>
 
-  <h2>Прокси</h2>
-  <p>Если вы включаете прокси, трафик к серверам Telegram может идти через выбранный промежуточный сервер. Echogram подбирает публичные прокси из открытых интернет-источников и отбрасывает недоступные. Мы не гарантируем политику конфиденциальности сторонних прокси-операторов. Прокси можно отключить в настройках.</p>
+        <h2>Что хранится на устройстве</h2>
+        <p>На телефоне сохраняются локальная база чатов, настройки, список прокси и ключи сессии, необходимые для входа. Удаление приложения стирает локальные данные Echogram на этом устройстве.</p>
 
-  <h2>Платежи</h2>
-  <p>Покупка официальных услуг Telegram в Echogram недоступна. Их можно оформить только в официальном приложении Telegram.</p>
+        <h2>Прокси</h2>
+        <p>Если вы включаете прокси, трафик к серверам Telegram может идти через выбранный промежуточный сервер. Echogram подбирает публичные прокси из открытых интернет-источников и отбрасывает недоступные. Мы не гарантируем политику конфиденциальности сторонних прокси-операторов. Прокси можно отключить в настройках.</p>
 
-  <h2>Контакты</h2>
-  <p>Канал проекта: <a href="https://t.me/echogram_official">t.me/echogram_official</a></p>
+        <h2>Платежи</h2>
+        <p>Покупка официальных услуг Telegram в Echogram недоступна. Их можно оформить только в официальном приложении Telegram.</p>
+
+        <h2>Контакты</h2>
+        <p>Канал проекта: <a href="https://t.me/echogram_official">t.me/echogram_official</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="index.html">
+            <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#667fff"/>
+              <path d="M8 16c2.2-3.2 4.6-4.8 8-4.8s5.8 1.6 8 4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M11 16c1.4-2 3-3 5-3s3.6 1 5 3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="16" cy="16.2" r="1.5" fill="#fff"/>
+            </svg>
+            Echogram
+          </a>
+          <p>Неофициальный клиент на базе Telegram для Android.</p>
+        </div>
+        <div class="footer-links">
+          <a href="faq.html">FAQ</a>
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="https://t.me/echogram_official">t.me/echogram_official</a>
+        </div>
+      </div>
+      <p class="legal">Echogram не является Telegram Messenger Inc. и не продаёт подписку Telegram Premium, звёзды и подарки.</p>
+    </div>
+  </footer>
+  <script src="js/lottie.min.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>
