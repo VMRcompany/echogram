@@ -14,12 +14,14 @@
   if (burger && nav) {
     burger.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
+      burger.classList.toggle("open", open);
       document.body.classList.toggle("menu-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
     });
     nav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         nav.classList.remove("open");
+        burger.classList.remove("open");
         document.body.classList.remove("menu-open");
         burger.setAttribute("aria-expanded", "false");
       });
@@ -47,6 +49,29 @@
       });
     }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
     reveals.forEach(function (node) { seen.observe(node); });
+  }
+
+  if (document.querySelector("[data-latest-apk]")) {
+    fetch("https://api.github.com/repos/VMRcompany/echogram/releases/latest")
+      .then(function (response) { return response.json(); })
+      .then(function (data) {
+        var assets = data.assets || [];
+        var apk = null;
+        for (var i = 0; i < assets.length; i++) {
+          if (/\.apk$/i.test(assets[i].name)) { apk = assets[i]; break; }
+        }
+        if (!apk) return;
+        document.querySelectorAll("[data-latest-apk]").forEach(function (node) {
+          node.href = apk.browser_download_url;
+        });
+        document.querySelectorAll("[data-apk-label]").forEach(function (node) {
+          node.textContent = "Скачать " + (data.tag_name || "APK");
+        });
+        document.querySelectorAll("[data-apk-meta]").forEach(function (node) {
+          node.textContent = "Версия " + (data.tag_name || "") + " · GitHub Releases";
+        });
+      })
+      .catch(function () {});
   }
 
   if (window.lottie) {
