@@ -51,24 +51,51 @@
     reveals.forEach(function (node) { seen.observe(node); });
   }
 
-  if (document.querySelector("[data-latest-apk]")) {
+  if (document.querySelector("[data-latest-apk], [data-release-files], [data-apk-meta]")) {
     fetch("https://api.github.com/repos/VMRcompany/echogram/releases/latest")
       .then(function (response) { return response.json(); })
       .then(function (data) {
         var assets = data.assets || [];
+        var tag = data.tag_name || "";
         var apk = null;
-        for (var i = 0; i < assets.length; i++) {
-          if (/\.apk$/i.test(assets[i].name)) { apk = assets[i]; break; }
+        var i;
+        for (i = 0; i < assets.length; i++) {
+          if (/\.apk$/i.test(assets[i].name) && tag && assets[i].name.indexOf(tag) !== -1) {
+            apk = assets[i];
+            break;
+          }
         }
-        if (!apk) return;
-        document.querySelectorAll("[data-latest-apk]").forEach(function (node) {
-          node.href = apk.browser_download_url;
-        });
+        if (!apk) {
+          for (i = 0; i < assets.length; i++) {
+            if (/\.apk$/i.test(assets[i].name)) { apk = assets[i]; break; }
+          }
+        }
+        if (!apk && assets.length) apk = assets[0];
+        if (apk) {
+          document.querySelectorAll("[data-latest-apk]").forEach(function (node) {
+            node.href = apk.browser_download_url;
+          });
+        }
         document.querySelectorAll("[data-apk-label]").forEach(function (node) {
-          node.textContent = "Скачать " + (data.tag_name || "APK");
+          node.textContent = tag ? "Скачать " + tag : "Скачать";
         });
         document.querySelectorAll("[data-apk-meta]").forEach(function (node) {
-          node.textContent = "Версия " + (data.tag_name || "") + " · GitHub Releases";
+          node.textContent = tag ? "Версия " + tag + " · GitHub Releases" : "GitHub Releases";
+        });
+        document.querySelectorAll("[data-release-files]").forEach(function (list) {
+          list.textContent = "";
+          assets.forEach(function (file) {
+            var item = document.createElement("li");
+            var link = document.createElement("a");
+            link.href = file.browser_download_url;
+            link.textContent = file.name;
+            var size = document.createElement("span");
+            var mb = file.size / 1048576;
+            size.textContent = mb >= 0.1 ? mb.toFixed(1).replace(".", ",") + " МБ" : "";
+            item.appendChild(link);
+            if (size.textContent) item.appendChild(size);
+            list.appendChild(item);
+          });
         });
       })
       .catch(function () {});
