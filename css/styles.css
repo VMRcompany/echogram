@@ -427,6 +427,8 @@ h1 {
   line-height: 1.15;
 }
 .adv-item p { margin: 6px 0 0; color: var(--muted); font-size: 17px; }
+.adv-item a { color: var(--accent-2); }
+.adv-item a:hover { text-decoration: underline; }
 
 .cards {
   display: grid;

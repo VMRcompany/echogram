@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Вопросы и ответы — Echogram</title>
-  <meta name="description" content="Ответы об Echogram: чем клиент отличается от Telegram, как работает прокси и где официальный канал.">
+  <meta name="description" content="Как Echogram подбирает прокси, нужен ли VPN и где скачать последнюю версию для Android.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://echogram.mineholde.pro/faq.html">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Echogram">
   <meta property="og:title" content="Вопросы и ответы — Echogram">
-  <meta property="og:description" content="Ответы об Echogram: чем клиент отличается от Telegram, как работает прокси и где официальный канал.">
+  <meta property="og:description" content="Как Echogram подбирает прокси, нужен ли VPN и где скачать последнюю версию для Android.">
   <meta property="og:url" content="https://echogram.mineholde.pro/faq.html">
   <meta property="og:image" content="https://echogram.mineholde.pro/icon.webp">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Вопросы и ответы — Echogram">
-  <meta name="twitter:description" content="Ответы об Echogram: чем клиент отличается от Telegram, как работает прокси и где официальный канал.">
+  <meta name="twitter:description" content="Как Echogram подбирает прокси, нужен ли VPN и где скачать последнюю версию для Android.">
   <meta name="twitter:image" content="https://echogram.mineholde.pro/icon.webp">
   <meta name="theme-color" content="#09090c">
   <link rel="icon" href="icon.webp" type="image/webp">
@@ -30,34 +30,34 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Чем Echogram отличается от Telegram?",
+        "name": "Нужен ли VPN?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Echogram использует собственный идентификатор приложения, своё оформление и свои настройки. Сообщения по-прежнему идут через инфраструктуру Telegram."
+          "text": "Нет. Echogram сам подбирает рабочий прокси и подключается к адресу, который отвечает. Отдельную программу ставить не нужно."
         }
       },
       {
         "@type": "Question",
-        "name": "Можно ли купить Telegram Premium, звёзды и подарки в Echogram?",
+        "name": "Как выбирается прокси?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Нет. Оформить официальные утилиты Telegram можно только в официальном приложении Telegram."
+          "text": "Клиент смотрит открытые списки, проверяет, кто отвечает, и берёт вариант с лучшим откликом. Молчащие адреса вычёркиваются. Пока текущий жив, он не меняется."
         }
       },
       {
         "@type": "Question",
-        "name": "Как работает прокси?",
+        "name": "Можно ли выключить прокси?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Если прокси включён в настройках, Echogram ищет рабочие SOCKS5 и MTProto-серверы, проверяет доступность и подключается только к доступному адресу. Прокси можно выключить вручную."
+          "text": "Да. Прокси включён по умолчанию и отключается в настройках."
         }
       },
       {
         "@type": "Question",
-        "name": "Где официальный канал?",
+        "name": "Где скачать последнюю версию?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Официальный канал: https://t.me/echogram_official"
+          "text": "Кнопка «Скачать» на сайте отдаёт последний APK из релизов GitHub."
         }
       }
     ]
@@ -94,7 +94,7 @@
           <div>
             <p class="section-label reveal">Помощь</p>
             <h1 class="reveal" style="--i:1">Echogram FAQ</h1>
-            <p class="reveal" style="--i:2">Echogram — независимый клиент мессенджера на протоколе Telegram. Это не официальное приложение Telegram.</p>
+            <p class="reveal" style="--i:2">Коротко о связи, прокси и установке. Без лишней теории.</p>
           </div>
           <div class="sticker sticker-lg reveal" style="--i:2" data-sticker="stickers/laugh.json" aria-hidden="true"></div>
         </div>
@@ -104,20 +104,24 @@
       <div class="wrap">
         <div class="faq-list">
           <div class="faq-item open">
-            <button class="faq-q" type="button" aria-expanded="true">Чем Echogram отличается от Telegram?<span class="mark" aria-hidden="true"></span></button>
-            <div class="faq-a">Echogram использует собственный идентификатор приложения, своё оформление и свои настройки. Сообщения по-прежнему идут через инфраструктуру Telegram.</div>
+            <button class="faq-q" type="button" aria-expanded="true">Нужен ли VPN?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Нет. Echogram сам подбирает рабочий прокси и подключается к адресу, который отвечает. Отдельную программу ставить не нужно.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" type="button" aria-expanded="false">Можно ли купить Telegram Premium, звёзды и подарки в Echogram?<span class="mark" aria-hidden="true"></span></button>
-            <div class="faq-a">Нет. Оформить официальные утилиты Telegram можно только в официальном приложении Telegram.</div>
+            <button class="faq-q" type="button" aria-expanded="false">Как выбирается прокси?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Клиент смотрит открытые списки, проверяет, кто отвечает, и берёт вариант с лучшим откликом. Молчащие адреса вычёркиваются. Пока текущий жив, он не меняется. Новый берётся только если связь пропала. Для звонков сохраняется отдельный быстрый маршрут.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" type="button" aria-expanded="false">Как работает прокси?<span class="mark" aria-hidden="true"></span></button>
-            <div class="faq-a">Если прокси включён в настройках, Echogram ищет рабочие SOCKS5 и MTProto-серверы в открытых списках в интернете, проверяет пинг и подключается только к доступному адресу. Недоступные адреса удаляются. Другой сервер выбирается, только если текущий перестал отвечать. Прокси можно выключить вручную.</div>
+            <button class="faq-q" type="button" aria-expanded="false">Можно ли выключить прокси?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Да. Он включён по умолчанию, чтобы проще оставаться на связи, и выключается в настройках.</div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" type="button" aria-expanded="false">Где официальный канал?<span class="mark" aria-hidden="true"></span></button>
-            <div class="faq-a"><a href="https://t.me/echogram_official">t.me/echogram_official</a></div>
+            <button class="faq-q" type="button" aria-expanded="false">Где скачать последнюю версию?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Кнопка «Скачать» на <a href="index.html">главной</a> отдаёт последний APK. Новости сборок — в канале <a href="https://t.me/echogram_official">t.me/echogram_official</a>.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">Что будет с чатами, если удалить приложение?<span class="mark" aria-hidden="true"></span></button>
+            <div class="faq-a">Локальная копия на этом телефоне сотрётся. Аккаунт останется: войдите снова по номеру, и переписка подтянется.</div>
           </div>
           <div class="faq-item">
             <button class="faq-q" type="button" aria-expanded="false">Политика конфиденциальности<span class="mark" aria-hidden="true"></span></button>
@@ -136,7 +140,7 @@
             <img class="logo-mark" src="icon.webp" width="32" height="32" alt="">
             Echogram
           </a>
-          <p>Неофициальный клиент на базе Telegram для Android.</p>
+          <p>Клиент Telegram для Android. На связи без VPN.</p>
         </div>
         <div class="footer-links">
           <a href="faq.html">FAQ</a>
@@ -144,7 +148,7 @@
           <a href="https://t.me/echogram_official">t.me/echogram_official</a>
         </div>
       </div>
-      <p class="legal">Echogram не является Telegram Messenger Inc. и не продаёт подписку Telegram Premium, звёзды и подарки.</p>
+      <p class="legal">Бесплатно для Android. Внутри нет продажи Premium, звёзд и подарков.</p>
     </div>
   </footer>
   <script src="js/lottie.min.js"></script>
