@@ -119,6 +119,7 @@ button, input { font-family: inherit; }
 .logo-mark { transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.32, 1); }
 .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.06); }
 .header-cta { margin-left: 8px; }
+.header-web { white-space: nowrap; }
 
 .btn {
   display: inline-flex;
@@ -632,7 +633,7 @@ h1 {
 }
 
 .menu-open { overflow: hidden; }
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
   .burger { display: grid; place-items: center; }
   .nav {
     position: fixed;
@@ -657,8 +658,11 @@ h1 {
     visibility: visible;
     transform: none;
   }
-  .nav a {
+  .nav a:not(.btn) {
     font-size: 28px;
+  }
+  .nav a.btn { font-size: 16px; }
+  .nav a {
     opacity: 0;
     transform: translateY(18px);
   }
@@ -671,6 +675,7 @@ h1 {
   .nav.open a:nth-child(4) { animation-delay: 0.2s; }
   .nav.open a:nth-child(5) { animation-delay: 0.25s; }
   .nav.open a:nth-child(6) { animation-delay: 0.3s; }
+  .nav.open a:nth-child(7) { animation-delay: 0.35s; }
   .header-cta { margin: 8px 0 0; }
   .hero-grid, .intro-grid, .cards, .reasons, .adv-item { grid-template-columns: 1fr; }
   .hero { padding-top: 36px; }
