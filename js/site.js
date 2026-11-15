@@ -52,50 +52,34 @@
   }
 
   if (document.querySelector("[data-latest-apk], [data-release-files], [data-apk-meta]")) {
-    fetch("https://api.github.com/repos/VMRcompany/echogram/releases/latest")
-      .then(function (response) { return response.json(); })
-      .then(function (data) {
-        var assets = data.assets || [];
-        var tag = data.tag_name || "";
-        var apk = null;
-        var i;
-        for (i = 0; i < assets.length; i++) {
-          if (/\.apk$/i.test(assets[i].name) && tag && assets[i].name.indexOf(tag) !== -1) {
-            apk = assets[i];
-            break;
-          }
-        }
-        if (!apk) {
-          for (i = 0; i < assets.length; i++) {
-            if (/\.apk$/i.test(assets[i].name)) { apk = assets[i]; break; }
-          }
-        }
-        if (!apk && assets.length) apk = assets[0];
-        if (apk) {
-          document.querySelectorAll("[data-latest-apk]").forEach(function (node) {
-            node.href = apk.browser_download_url;
-          });
-        }
+    fetch("latest.json")
+      .then(function (response) { return response.ok ? response.json() : null; })
+      .then(function (info) {
+        if (!info || !info.file) return;
+        var name = info.name || "Echogram.apk";
+        document.querySelectorAll("[data-latest-apk]").forEach(function (node) {
+          node.href = info.file;
+          node.setAttribute("download", name);
+        });
         document.querySelectorAll("[data-apk-label]").forEach(function (node) {
-          node.textContent = tag ? "Скачать " + tag : "Скачать";
+          node.textContent = info.tag ? "Скачать " + info.tag : "Скачать";
         });
         document.querySelectorAll("[data-apk-meta]").forEach(function (node) {
-          node.textContent = tag ? "Версия " + tag + " · GitHub Releases" : "GitHub Releases";
+          node.textContent = info.tag ? "Версия " + info.tag : "";
         });
         document.querySelectorAll("[data-release-files]").forEach(function (list) {
           list.textContent = "";
-          assets.forEach(function (file) {
-            var item = document.createElement("li");
-            var link = document.createElement("a");
-            link.href = file.browser_download_url;
-            link.textContent = file.name;
-            var size = document.createElement("span");
-            var mb = file.size / 1048576;
-            size.textContent = mb >= 0.1 ? mb.toFixed(1).replace(".", ",") + " МБ" : "";
-            item.appendChild(link);
-            if (size.textContent) item.appendChild(size);
-            list.appendChild(item);
-          });
+          var item = document.createElement("li");
+          var link = document.createElement("a");
+          link.href = info.file;
+          link.setAttribute("download", name);
+          link.textContent = name;
+          var size = document.createElement("span");
+          var mb = info.size ? info.size / 1048576 : 0;
+          size.textContent = mb >= 0.1 ? mb.toFixed(1).replace(".", ",") + " МБ" : "";
+          item.appendChild(link);
+          if (size.textContent) item.appendChild(size);
+          list.appendChild(item);
         });
       })
       .catch(function () {});

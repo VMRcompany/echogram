@@ -1,0 +1,47 @@
+name: Publish latest APK
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Download the release APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "release" ]; then
+            tag="${{ github.event.release.tag_name }}"
+          else
+            tag="$(gh release view --repo "${{ github.repository }}" --json tagName --jq .tagName)"
+          fi
+          rm -f ./*.apk
+          gh release download "$tag" --repo "${{ github.repository }}" --pattern "*.apk" --dir "$RUNNER_TEMP/apk"
+          apk="$(find "$RUNNER_TEMP/apk" -maxdepth 1 -type f -name '*.apk' | head -n 1)"
+          test -n "$apk"
+          cp "$apk" Echogram.apk
+          name="$(basename "$apk")"
+          size="$(wc -c < Echogram.apk | tr -d ' ')"
+          printf '{\n  "tag": "%s",\n  "name": "%s",\n  "file": "Echogram.apk",\n  "size": %s\n}\n' "$tag" "$name" "$size" > latest.json
+
+      - name: Commit the install file
+        run: |
+          set -euo pipefail
+          git add Echogram.apk latest.json
+          if git diff --cached --quiet; then
+            echo "APK already published"
+            exit 0
+          fi
+          git -c user.name="VMRcompany" -c user.email="243631815+VMRcompany@users.noreply.github.com" commit -m "Publish the latest install file."
+          git push origin HEAD:master
