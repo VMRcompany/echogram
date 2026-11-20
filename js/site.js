@@ -36,6 +36,32 @@
     });
   });
 
+  document.querySelectorAll("[data-copy]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var input = document.getElementById(button.getAttribute("data-copy"));
+      if (!input) return;
+      var text = input.value;
+      var previous = button.textContent;
+      var done = function () {
+        button.textContent = "Скопировано";
+        window.setTimeout(function () { button.textContent = previous; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          input.focus();
+          input.select();
+          document.execCommand("copy");
+          done();
+        });
+      } else {
+        input.focus();
+        input.select();
+        document.execCommand("copy");
+        done();
+      }
+    });
+  });
+
   var reveals = document.querySelectorAll(".reveal");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce || !("IntersectionObserver" in window)) {
