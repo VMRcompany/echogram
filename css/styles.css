@@ -34,8 +34,8 @@ body:before {
 }
 body:after {
   z-index: -1;
-  background: url("../img/telegram-pattern.svg") center / cover no-repeat;
-  opacity: 0.34;
+  background: url("../img/telegram-pattern.svg") left top / 320px auto repeat;
+  opacity: 0.18;
 }
 body {
   font-family: "Manrope", "Segoe UI", sans-serif;
@@ -870,4 +870,46 @@ h1 {
   .glow, .sticker-xl, .scene-card .sticker, .card .sticker, .reason .sticker,
   .hero:before, .hero:after, .kicker i { animation: none; }
   .nav a { opacity: 1; transform: none; }
+}
+
+h1,
+h2,
+.lead,
+.fine,
+.apk-meta,
+.section-label,
+.page-hero p,
+.footer,
+.footer p {
+  text-shadow: 0 0 14px rgba(255, 252, 244, 0.95), 0 1px 0 rgba(255, 252, 244, 0.9);
+}
+.header .wrap,
+.intro-card,
+.adv-item,
+.card,
+.channel,
+.faq-item,
+.doc,
+.reason,
+.scene-card {
+  background: rgba(255, 252, 244, 0.92);
+  border-color: rgba(255, 255, 255, 0.78);
+}
+.fine,
+.apk-meta,
+.date,
+.release-files span,
+.doc p {
+  color: var(--muted);
+}
+.section-label,
+.release-files a,
+.adv-item a,
+.faq-a a,
+.doc a {
+  color: #3146b0;
+}
+.faq-q .mark:before,
+.faq-q .mark:after {
+  background: #1c2618;
 }
