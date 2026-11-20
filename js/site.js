@@ -51,38 +51,67 @@
     reveals.forEach(function (node) { seen.observe(node); });
   }
 
+  function applyRelease(info) {
+    if (!info || !info.file) return;
+    var name = info.name || "Echogram.apk";
+    document.querySelectorAll("[data-latest-apk]").forEach(function (node) {
+      node.href = info.file;
+      node.setAttribute("download", name);
+    });
+    document.querySelectorAll("[data-apk-label]").forEach(function (node) {
+      node.textContent = info.tag ? "Скачать " + info.tag : "Скачать";
+    });
+    document.querySelectorAll("[data-apk-meta]").forEach(function (node) {
+      node.textContent = info.tag ? "Версия " + info.tag : "";
+    });
+    document.querySelectorAll("[data-release-files]").forEach(function (list) {
+      list.textContent = "";
+      var item = document.createElement("li");
+      var link = document.createElement("a");
+      link.href = info.file;
+      link.setAttribute("download", name);
+      link.textContent = name;
+      var size = document.createElement("span");
+      var mb = info.size ? info.size / 1048576 : 0;
+      size.textContent = mb >= 0.1 ? mb.toFixed(1).replace(".", ",") + " МБ" : "";
+      item.appendChild(link);
+      if (size.textContent) item.appendChild(size);
+      list.appendChild(item);
+    });
+  }
+
   if (document.querySelector("[data-latest-apk], [data-release-files], [data-apk-meta]")) {
-    fetch("latest.json")
+    fetch("https://api.github.com/repos/VMRcompany/echogram/releases/latest")
       .then(function (response) { return response.ok ? response.json() : null; })
-      .then(function (info) {
-        if (!info || !info.file) return;
-        var name = info.name || "Echogram.apk";
-        document.querySelectorAll("[data-latest-apk]").forEach(function (node) {
-          node.href = info.file;
-          node.setAttribute("download", name);
-        });
-        document.querySelectorAll("[data-apk-label]").forEach(function (node) {
-          node.textContent = info.tag ? "Скачать " + info.tag : "Скачать";
-        });
-        document.querySelectorAll("[data-apk-meta]").forEach(function (node) {
-          node.textContent = info.tag ? "Версия " + info.tag : "";
-        });
-        document.querySelectorAll("[data-release-files]").forEach(function (list) {
-          list.textContent = "";
-          var item = document.createElement("li");
-          var link = document.createElement("a");
-          link.href = info.file;
-          link.setAttribute("download", name);
-          link.textContent = name;
-          var size = document.createElement("span");
-          var mb = info.size ? info.size / 1048576 : 0;
-          size.textContent = mb >= 0.1 ? mb.toFixed(1).replace(".", ",") + " МБ" : "";
-          item.appendChild(link);
-          if (size.textContent) item.appendChild(size);
-          list.appendChild(item);
+      .then(function (data) {
+        var assets = (data && data.assets) || [];
+        var tag = (data && data.tag_name) || "";
+        var apk = null;
+        var i;
+        for (i = 0; i < assets.length; i++) {
+          if (/\.apk$/i.test(assets[i].name) && tag && assets[i].name.indexOf(tag) !== -1) {
+            apk = assets[i];
+            break;
+          }
+        }
+        if (!apk) {
+          for (i = 0; i < assets.length; i++) {
+            if (/\.apk$/i.test(assets[i].name)) { apk = assets[i]; break; }
+          }
+        }
+        if (!apk || !apk.browser_download_url) throw new Error("no apk");
+        applyRelease({
+          tag: tag,
+          name: apk.name,
+          file: apk.browser_download_url,
+          size: apk.size
         });
       })
-      .catch(function () {});
+      .catch(function () {
+        fetch("latest.json").then(function (response) {
+          return response.ok ? response.json() : null;
+        }).then(applyRelease).catch(function () {});
+      });
   }
 
   if (window.lottie) {
