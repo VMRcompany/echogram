@@ -126,8 +126,9 @@
           }
         }
         if (!apk || !apk.browser_download_url) throw new Error("no apk");
+        var display = ((data && data.name) || "").replace(/^Echogram\s+/, "") || tag;
         applyRelease({
-          tag: tag,
+          tag: display,
           name: apk.name,
           file: apk.browser_download_url,
           size: apk.size
